@@ -35,15 +35,15 @@
 	</p>
 </div>
 <div />
-<a href="/galerie" class="galerie_lien contained l_contained">
-	<p>Visiter la galerie de photos</p>
+<div  class="galerie_lien contained">
+	<a href="/galerie">Visiter la galerie de photos</a>
 	<svg viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path
 			d="M29.3333 3.77778V30.2222H3.66667V3.77778H29.3333ZM29.3333 0H3.66667C1.65 0 0 1.7 0 3.77778V30.2222C0 32.3 1.65 34 3.66667 34H29.3333C31.35 34 33 32.3 33 30.2222V3.77778C33 1.7 31.35 0 29.3333 0ZM20.4233 16.7356L14.9233 24.0456L11 19.1533L5.5 26.4444H27.5L20.4233 16.7356Z"
 			fill="white"
 		/>
 	</svg>
-</a>
+</div>
 <div bind:this={btf_container} class="btf_container contained l_contained">
 	<picture>
 		<source srcset="op1-400.webp, op1-800.webp 2x" media="(max-width:500px)" type="image/webp" />
@@ -60,11 +60,12 @@
 	</picture>
 	<h2>Discutions de votre future cuisine!</h2>
 	<div class="form_container">
-		<Form />
+		<Form class="form"/>
 	</div>
 </div>
 
 <style lang="scss">
+
 	@media (max-width: 1024px) {
 		.atf_container {
 			& h1,
@@ -74,8 +75,12 @@
 			}
 		}
 		.btf_container {
+			margin-top: 2rem;
 			& img {
 				display: none;
+			}
+			& h2{
+				text-align: initial;
 			}
 		}
 	}
@@ -130,7 +135,7 @@
 			transition: transform 2s ease, opacity 1s ease;
 			& picture {
 				margin-right: 2rem;
-				align-self: center;
+				align-self: flex-start;
 				grid-area: 1 / 1 / span 3 / span 1;
 				filter: drop-shadow(0px 1rem 2rem rgba(0, 0, 0, 0.75));	
 				@media (max-width: 1449px) {
@@ -153,8 +158,12 @@
 	.galerie_lien {
 		display: flex;
 		margin-top: 2rem;
-		width: fit-content;
+		align-items: center;
+		justify-content: center;
 		filter: drop-shadow(0.25rem 0.25rem 0.125rem rgba(0,0,0,0.75));
+		& a{
+			font-size: 1.2rem;
+		}
 		& svg {
 			height: 1.5rem;
 			margin-left: 1rem;

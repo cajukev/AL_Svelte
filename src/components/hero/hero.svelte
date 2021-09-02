@@ -55,7 +55,7 @@
       width: 100%;
       height: 100%;  
       transition:opacity 0.5s ease;
-			background-color: gray;
+			background-color: #252527;
       & img{
         width: 100%;
       }    

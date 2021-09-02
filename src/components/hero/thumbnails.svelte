@@ -15,8 +15,19 @@
 			}}
 		>
 			<picture>
-				<source srcset="op{num}-120.webp " type="image/webp" />
-				<source srcset="op{num}-120.jpg " type="image/jpeg" />
+				<source
+				srcset="op{num}-120.webp, op{num}-240.webp 2x"
+				media="(max-width:1000px)"
+				type="image/webp"
+				num
+			/>
+			<source
+				srcset="op{num}-120.jpg, op{num}-240.jpg 2x"
+				media="(max-width:1000px)"
+				type="image/jpeg"
+			/>
+				<source srcset="op{num}-240.webp " type="image/webp" />
+				<source srcset="op{num}-240.jpg " type="image/jpeg" />
 				<img
 					class={$heroImg == num ? 'selected' : ''}
 					src="op{num}-120.jpg"

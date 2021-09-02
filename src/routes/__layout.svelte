@@ -85,7 +85,7 @@
 	}
 	:global(p),
 	:global(a),
-	:global(legend),
+	:global(label),
 	:global(input),
 	:global(button) {
 		/* https://www.sitepoint.com/eight-definitive-font-stacks-2/?_ga=2.261681806.221548906.1620436002-626617126.1619641332 */
