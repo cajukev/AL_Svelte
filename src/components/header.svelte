@@ -32,12 +32,15 @@
 		<p><i>© Armoires de cuisine Lavallée LTÉE</i></p>
 	</div>
 	<div class="links">
-		<svg class="svg" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path
-				d="M38.5 0.5V40H27.1V26.0652H33.4V20.0501H27.1V16.0401C27.1 14.9373 28.045 14.0351 29.2 14.0351H33.4V8.02005H28.15C24.097 8.02005 20.8 11.1679 20.8 15.0376V20.0501H16.6V26.0652H20.8V39.6992H0.5V0.5H38.5Z"
-				fill="white"
-			/>
-		</svg>
+		<a href="https://www.facebook.com/Armoires-de-cuisine-Lavall%C3%A9e-lt%C3%A9e-378982095772299" target="_blank">
+			<svg class="svg" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M38.5 0.5V40H27.1V26.0652H33.4V20.0501H27.1V16.0401C27.1 14.9373 28.045 14.0351 29.2 14.0351H33.4V8.02005H28.15C24.097 8.02005 20.8 11.1679 20.8 15.0376V20.0501H16.6V26.0652H20.8V39.6992H0.5V0.5H38.5Z"
+					fill="white"
+				/>
+			</svg>
+		</a>
+		
 		<a href={$lang == 'fr' ? $page + '/en' : '/' + $page} class="lang"
 			><p>{$lang == 'fr' ? 'English' : 'Français'}</p></a
 		>
@@ -68,7 +71,7 @@
 				justify-content: space-between;
 				align-items: center;
 				padding-top: 1rem;
-				& svg {
+				& a {
 					height: 1.5em;
 					width: 1.5em;
 				}
@@ -123,8 +126,9 @@
 				flex-direction: row;
 				align-items: center;
 
-				& svg {
-					height: 80%;
+				& a {
+					height: 1.5em;
+					width: 1.5em;
 					margin-right: 2rem;
 				}
 			}

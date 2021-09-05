@@ -128,9 +128,9 @@
 					tabindex="0"
 					role="button"
 					class="navphoto {currentpicture == 1 ? 'disabled' : ''}"
-					on:click={() => (currentpicture -= 1)}
+					on:click={() => (currentpicture = Math.max(currentpicture-1,1))}
 					on:keypress={(e) => {
-						if (e.charCode === 13) currentpicture = currentpicture - 1;
+						if (e.charCode === 13) (currentpicture = Math.max(currentpicture-1,1));
 					}}
 				>
 					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,9 +145,9 @@
 					tabindex="0"
 					role="button"
 					class="navcategorie {currentcategory == 1 ? 'disabled' : ''}"
-					on:click={() => {currentcategory -= 1;currentpicture=1}}
+					on:click={() => {(currentcategory = Math.max(currentcategory-1,1));currentpicture=1}}
 					on:keypress={(e) => {
-						if (e.charCode === 13) {currentcategory -= 1;currentpicture=1}
+						if (e.charCode === 13) {(currentcategory = Math.max(currentcategory-1,1));currentpicture=1}
 					}}
 				>
 					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -166,9 +166,9 @@
 					class="navphoto {currentpicture == album.categories[currentcategory - 1].photos.length
 						? 'disabled'
 						: ''}"
-					on:click={() => (currentpicture += 1)}
+					on:click={() => currentpicture = Math.min(currentpicture+1,album.categories[currentcategory - 1].photos.length)}
 					on:keypress={(e) => {
-						if (e.charCode === 13) currentpicture += 1;
+						if (e.charCode === 13) currentpicture = Math.min(currentpicture+1,album.categories[currentcategory - 1].photos.length);
 					}}
 				>
 					<p>Photo</p>
@@ -184,7 +184,7 @@
 					role="button"
 					class="navcategorie {currentcategory == album.categories.length ? 'disabled':''}"
 					on:blur={close.focus()}
-					on:click={() => {currentcategory += 1;currentpicture = 1}}
+					on:click={() => {currentcategory = Math.min(currentcategory+1,album.categories.length);currentpicture = 1}}
 					on:keypress={(e) => {
 						if (e.charCode === 13) {currentcategory += 1;currentpicture = 1;}
 					}}
@@ -264,6 +264,7 @@
 					cursor: pointer;
 					&.disabled {
 						opacity: 0.5;
+						cursor: default;
 					}
 				}
 				& svg {
