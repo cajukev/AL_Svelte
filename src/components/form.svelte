@@ -25,8 +25,8 @@
 		<label for="email">Adresse courriel <span style="color:#ff9d9d">*</span></label>
 		<input type="text" id="email" name="email" bind:value={form3} on:input={formCheck1} />
 		<label for="desc">Description du projet <span style="color:#ff9d9d">*</span></label>
-		<input type="text" id="desc" name="desc" bind:value={form4} on:input={formCheck1} />
-  </div>
+		<textarea id="desc" name="desc" bind:value={form4} on:input={formCheck1} />
+	</div>
 
 	<div class="boutons">
 		<button disabled type="button" bind:this={b1}>Envoyer</button>
@@ -36,8 +36,13 @@
 
 <style lang="scss">
 	form {
-    border-left: 1px solid white;
-    padding:  0.5rem 0 0.5rem 0.75rem;
+		border-left: 1px solid white;
+		padding: 0.5rem 0 0.5rem 0.75rem;
+		& textarea {
+			display: block;
+      height: 5rem;
+			resize: none;
+		}
 	}
 	@media (max-width: 1024px) {
 		form,
@@ -55,10 +60,14 @@
 	label {
 		color: white;
 	}
-	input {
+	input,
+	textarea {
 		width: 100%;
 		color: black;
 		margin-bottom: 0.75rem;
+    box-shadow: 0 0.15rem 0.3rem black;
+    border-width: 2px;
+    border-style: inset;
 	}
 	button {
 		color: black;

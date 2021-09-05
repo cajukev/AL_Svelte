@@ -47,32 +47,32 @@
 					>
 						<picture>
 							<source
-								srcset="op{photo.num}-240.webp, op{photo.num}-400.webp 2x"
+								srcset="op{photo.id}-240.webp, op{photo.id}-400.webp 2x"
 								media="(max-width:515px)"
 								type="image/webp"
 							/>
 							<source
-								srcset="op{photo.num}-240.jpg, op{photo.num}-400.jpg 2x"
+								srcset="op{photo.id}-240.jpg, op{photo.id}-400.jpg 2x"
 								media="(max-width:515px)"
 								type="image/jpeg"
 							/>
 							<source
-								srcset="op{photo.num}-400.webp, op{photo.num}-800.webp 2x"
+								srcset="op{photo.id}-400.webp, op{photo.id}-800.webp 2x"
 								media="(max-width:1440px)"
 								type="image/webp"
 							/>
 							<source
-								srcset="op{photo.num}-400.jpg, op{photo.num}-800.jpg 2x"
+								srcset="op{photo.id}-400.jpg, op{photo.id}-800.jpg 2x"
 								media="(max-width:1440px)"
 								type="image/jpeg"
 							/>
 							<source
-								srcset="op{photo.num}-600.webp"
+								srcset="op{photo.id}-600.webp"
 								media="(max-width:1920px)"
 								type="image/webp"
 							/>
-							<source srcset="op{photo.num}-600.jpg" media="(max-width:1920px)" type="image/jpeg" />
-							<img src="op{photo.num}-240.jpg" alt="hi:)" />
+							<source srcset="op{photo.id}-600.jpg" media="(max-width:1920px)" type="image/jpeg" />
+							<img src="op{photo.id}-240.jpg" alt="hi:)" />
 						</picture>
 					</div>
 				{/each}
@@ -109,7 +109,7 @@
 				grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
 				grid-gap: 1rem;
 				width: 100%;
-				@media (min-width: 1444px) {
+				@media (min-width: 1462px) {
 					grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 				}
 				@media (max-width: 623px) {

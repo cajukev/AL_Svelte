@@ -12,7 +12,7 @@
 		console.log(album.categories);
 	});
 
-	$: console.log(`${currentcategory},${currentpicture},${album.categories}`);
+	$: console.log(`${currentcategory},${currentpicture}`);
 	$: if (close) close.focus();
 </script>
 
@@ -41,59 +41,86 @@
 			<div class="photo">
 				<picture>
 					<source
-						srcset="op{currentpicture}-400.webp, op{currentpicture}-800.webp 2x"
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-400.webp, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-800.webp 2x"
 						media="(max-width:400px)"
 						type="image/webp"
 						num
 					/>
 					<source
-						srcset="op{currentpicture}-400.jpg, op{currentpicture}-800.webp 2x"
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-400.jpg, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-800.webp 2x"
 						media="(max-width:400px)"
 						type="image/jpeg"
 					/>
 					<source
-						srcset="op{currentpicture}-600.webp, op{currentpicture}-1200.webp 2x"
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-600.webp, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1200.webp 2x"
 						media="(max-width:600px)"
 						type="image/webp"
 					/>
 					<source
-						srcset="op{currentpicture}-600.jpg, op{currentpicture}-1200.webp 2x"
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-600.jpg, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1200.webp 2x"
 						media="(max-width:600px)"
 						type="image/jpeg"
 					/>
 					<source
-						srcset="op{currentpicture}-1200.webp, op{currentpicture}-1600.webp 2x"
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1200.webp, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1600.webp 2x"
 						media="(max-width:1024px)"
 						type="image/webp"
 					/>
 					<source
-						srcset="op{currentpicture}-1200.jpg, op{currentpicture}-1600.webp 2x"
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1200.jpg, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1600.webp 2x"
 						media="(max-width:1024px)"
 						type="image/jpeg"
 					/>
 					<source
-						srcset="op{currentpicture}-800.webp "
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-800.webp "
 						media="(max-width:1280)"
 						type="image/webp"
 					/>
 					<source
-						srcset="op{currentpicture}-800.jpg "
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-800.jpg "
 						media="(max-width:1280px)"
 						type="image/jpeg"
 					/>
 					<source
-						srcset="op{currentpicture}-1200.webp "
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1200.webp "
 						media="(max-width:1920px)"
 						type="image/webp"
 					/>
 					<source
-						srcset="op{currentpicture}-1200.jpg "
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1200.jpg "
 						media="(max-width:1920px)"
 						type="image/jpeg"
 					/>
-					<source srcset="op{currentpicture}-1600.webp " type="image/webp" />
-					<source srcset="op{currentpicture}-1600.jpg " type="image/jpeg" />
-					<img src="op{currentpicture}-400.jpg" alt="hi:)" />
+					<source
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1600.webp "
+						type="image/webp"
+					/>
+					<source
+						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1600.jpg "
+						type="image/jpeg"
+					/>
+					<img
+						src="op{album.categories[currentcategory - 1].photos[currentpicture - 1].id}-400.jpg"
+						alt="hi:)"
+					/>
 				</picture>
 			</div>
 			<div class="prev">
@@ -118,6 +145,10 @@
 					tabindex="0"
 					role="button"
 					class="navcategorie {currentcategory == 1 ? 'disabled' : ''}"
+					on:click={() => {currentcategory -= 1;currentpicture=1}}
+					on:keypress={(e) => {
+						if (e.charCode === 13) {currentcategory -= 1;currentpicture=1}
+					}}
 				>
 					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -132,10 +163,13 @@
 				<div
 					tabindex="0"
 					role="button"
-					class="navphoto {currentpicture == album.categories[currentcategory - 1].photos.length - 1
+					class="navphoto {currentpicture == album.categories[currentcategory - 1].photos.length
 						? 'disabled'
 						: ''}"
 					on:click={() => (currentpicture += 1)}
+					on:keypress={(e) => {
+						if (e.charCode === 13) currentpicture += 1;
+					}}
 				>
 					<p>Photo</p>
 					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,7 +179,16 @@
 						/>
 					</svg>
 				</div>
-				<div tabindex="0" role="button" class="navcategorie" on:blur={close.focus()}>
+				<div
+					tabindex="0"
+					role="button"
+					class="navcategorie {currentcategory == album.categories.length ? 'disabled':''}"
+					on:blur={close.focus()}
+					on:click={() => {currentcategory += 1;currentpicture = 1}}
+					on:keypress={(e) => {
+						if (e.charCode === 13) {currentcategory += 1;currentpicture = 1;}
+					}}
+				>
 					<p>Catégorie</p>
 					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -156,9 +199,13 @@
 				</div>
 			</div>
 			<div class="text">
-				<p class="categorie">{album.categories[0].nom}</p>
-				<p class="photonom"><b>{album.categories[0].photos[0].nom}</b></p>
-				<p class="photodesc">{album.categories[0].photos[0].desc}</p>
+				<p class="categorie">{album.categories[currentcategory - 1].nom}</p>
+				<p class="photonom">
+					<b>{album.categories[currentcategory - 1].photos[currentpicture - 1].nom}</b>
+				</p>
+				<p class="photodesc">
+					{album.categories[currentcategory - 1].photos[currentpicture - 1].desc}
+				</p>
 			</div>
 		</div>
 	</div>
@@ -217,7 +264,6 @@
 					cursor: pointer;
 					&.disabled {
 						opacity: 0.5;
-						pointer-events: none;
 					}
 				}
 				& svg {
@@ -250,8 +296,6 @@
 				}
 			}
 			& .text {
-				
-
 				& p {
 					pointer-events: all;
 					&.categorie {
@@ -262,7 +306,6 @@
 					&.photonom {
 						font-size: 1.2rem;
 						width: fit-content;
-
 					}
 				}
 			}
@@ -359,10 +402,12 @@
 				max-width: 60vw;
 				align-self: start;
 				justify-self: center;
+				width: 100%;
 				display: grid;
-				grid-template-columns: repeat(2, auto);
+				grid-template-columns: 20% 80%;
+				align-content: start;
 				margin-top: 2rem;
-
+				margin-bottom: 2rem;
 				& p {
 					font-size: 1rem;
 					&.categorie {
@@ -372,9 +417,11 @@
 					&.photonom {
 						grid-area: 1 / 2 / span 1 / span 1;
 						margin-bottom: 1rem;
+						
 					}
 					&.photodesc {
 						grid-area: 2 / 2 / span 1 / span 1;
+						
 					}
 				}
 			}

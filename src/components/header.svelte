@@ -54,10 +54,6 @@
 					clip-path: polygon(70% 0,69% 0,70% 0,70% 0,70% 0,70% 0);
 				animation: logoAnim 0.5s 0.5s linear forwards;
 				}
-				
-			}
-			& p{
-				
 			}
 		}
 	}
