@@ -6,7 +6,8 @@
 	<div class="logoContainer">
 		<a href={$lang == 'fr' ? '/' : '/en'}>
 			<svg viewBox="0 0 168 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path class="swipe"
+				<path
+					class="swipe"
 					d="M86.8579 0.00162198C43.7225 5.53079 19.4514 9.63846 20.548 21.3502C24.0704 38.3358 100.311 43.0829 167.562 23.9379C124.837 51.0613 1.38639 56.0226 0.00808512 22.644C-0.584803 8.28604 31.4952 1.12658 74.7271 0.12322C78.683 0.0313954 82.732 -0.00885507 86.8579 0.00162198Z"
 					fill="url(#logoGradient)"
 				/>
@@ -32,7 +33,11 @@
 		<p><i>© Armoires de cuisine Lavallée LTÉE</i></p>
 	</div>
 	<div class="links">
-		<a href="https://www.facebook.com/Armoires-de-cuisine-Lavall%C3%A9e-lt%C3%A9e-378982095772299" target="_blank">
+		<a
+			class="fb"
+			href="https://www.facebook.com/Armoires-de-cuisine-Lavall%C3%A9e-lt%C3%A9e-378982095772299"
+			target="_blank"
+		>
 			<svg class="svg" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path
 					d="M38.5 0.5V40H27.1V26.0652H33.4V20.0501H27.1V16.0401C27.1 14.9373 28.045 14.0351 29.2 14.0351H33.4V8.02005H28.15C24.097 8.02005 20.8 11.1679 20.8 15.0376V20.0501H16.6V26.0652H20.8V39.6992H0.5V0.5H38.5Z"
@@ -40,22 +45,21 @@
 				/>
 			</svg>
 		</a>
-		
+
 		<a href={$lang == 'fr' ? $page + '/en' : '/' + $page} class="lang"
 			><p>{$lang == 'fr' ? 'English' : 'Français'}</p></a
 		>
 	</div>
-	
 </div>
 
 <style lang="scss">
-	.container{
-		& .logoContainer{
-			& svg{
-				filter: drop-shadow(0.25rem 0.25rem 0.125rem rgb(0,0,0,0.75));
-				& .swipe{
-					clip-path: polygon(70% 0,69% 0,70% 0,70% 0,70% 0,70% 0);
-				animation: logoAnim 0.5s 0.5s linear forwards;
+	.container {
+		& .logoContainer {
+			& svg {
+				filter: drop-shadow(0.25rem 0.25rem 0.125rem rgb(0, 0, 0, 0.75));
+				& .swipe {
+					clip-path: polygon(70% 0, 69% 0, 70% 0, 70% 0, 70% 0, 70% 0);
+					animation: logoAnim 0.5s 0.5s linear forwards;
 				}
 			}
 		}
@@ -71,7 +75,7 @@
 				justify-content: space-between;
 				align-items: center;
 				padding-top: 1rem;
-				& a {
+				& .fb {
 					height: 1.5em;
 					width: 1.5em;
 				}
@@ -82,7 +86,7 @@
 				flex-direction: column;
 				align-items: center;
 				padding-top: 1rem;
-				
+
 				& a {
 					width: 60%;
 					max-height: 5rem;
@@ -134,21 +138,21 @@
 			}
 		}
 	}
-	@keyframes logoAnim{
-		0%{
+	@keyframes logoAnim {
+		0% {
 			animation-timing-function: ease-in;
 		}
-		40%{
-			clip-path: polygon(70% 0,70% 12%,70% 13%,70% 12%,0 29%,0 0);
+		40% {
+			clip-path: polygon(70% 0, 70% 12%, 70% 13%, 70% 12%, 0 29%, 0 0);
 		}
-		50%{
-			clip-path: polygon(70% 0,70% 12%,50% 35%,70% 12%,0 80%,0 0);
+		50% {
+			clip-path: polygon(70% 0, 70% 12%, 50% 35%, 70% 12%, 0 80%, 0 0);
 		}
-		60%{
-			clip-path: polygon(70% 0,70% 12%,39% 100%,38% 100%,0 100%,0 0);
+		60% {
+			clip-path: polygon(70% 0, 70% 12%, 39% 100%, 38% 100%, 0 100%, 0 0);
 		}
-		100%{
-			clip-path: polygon(70% 0,70% 12%,100% 40%,100% 100%,0 100%,0 0);
+		100% {
+			clip-path: polygon(70% 0, 70% 12%, 100% 40%, 100% 100%, 0 100%, 0 0);
 			animation-timing-function: ease-out;
 		}
 	}
