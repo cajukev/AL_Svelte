@@ -369,6 +369,7 @@
 				& .navphoto,
 				.navcategorie {
 					transition: transform 0.25s ease;
+					perspective: 20;
 				}
 				& .navphoto:hover,
 				.navcategorie:hover {
@@ -387,6 +388,7 @@
 				& .navphoto,
 				.navcategorie {
 					transition: transform 0.25s ease;
+					perspective: 20;
 				}
 				& .navphoto:hover,
 				.navcategorie:hover {
