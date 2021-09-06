@@ -1,6 +1,6 @@
 <script>
 	import { album } from '/static/contenu.js';
-	import { fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	let nbcategories = album.categories.length;
 	let close;
@@ -14,10 +14,51 @@
 
 	$: console.log(`${currentcategory},${currentpicture}`);
 	$: if (close) close.focus();
+	let flipped1 = false;
+	let flipped2 = false;
+	let flipped3 = false;
+	let flipped4 = false;
+
+	let navAnim = (x, y) => {
+		if (x == 0 && y == 0) {
+			//anim prev photo
+			flipped1 = !flipped1;
+			document.getElementsByClassName('arrow')[0].style.transform = `rotatex(${
+				flipped1 ? '180deg' : '0deg'
+			})`;
+		} else {
+			if (x == 0 && y == 1) {
+				//anim prev cat
+				flipped2 = !flipped2;
+
+				document.getElementsByClassName('arrow')[1].style.transform = `rotatex(${
+					flipped2 ? '180deg' : '0deg'
+				})`;
+			} else {
+				if (x == 1 && y == 0) {
+					//anim next photo
+					flipped3 = !flipped3;
+
+					document.getElementsByClassName('arrow')[2].style.transform = `rotatex(${
+						flipped3 ? '180deg' : '0deg'
+					})`;
+				} else {
+					if (x == 1 && y == 1) {
+						//anim next cat
+						flipped4 = !flipped4;
+
+						document.getElementsByClassName('arrow')[3].style.transform = `rotatex(${
+							flipped4 ? '180deg' : '0deg'
+						})`;
+					}
+				}
+			}
+		}
+	};
 </script>
 
 {#if visible == true}
-	<div class="container" in:fly={{ y: 500, duration: 750 }} out:fly={{ y: 500, duration: 400 }}>
+	<div class="container" in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
 		<div class="bg" on:click={() => (visible = false)} />
 		<div class="grid">
 			<div
@@ -128,12 +169,18 @@
 					tabindex="0"
 					role="button"
 					class="navphoto {currentpicture == 1 ? 'disabled' : ''}"
-					on:click={() => (currentpicture = Math.max(currentpicture-1,1))}
+					on:click={() => {
+						currentpicture = Math.max(currentpicture - 1, 1);
+						navAnim(0, 0);
+					}}
 					on:keypress={(e) => {
-						if (e.charCode === 13) (currentpicture = Math.max(currentpicture-1,1));
+						if (e.charCode === 13) {
+							currentpicture = Math.max(currentpicture - 1, 1);
+							navAnim(0, 0);
+						}
 					}}
 				>
-					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg class="arrow" viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M21 41L23 38.8519L3.53901 20.4533L23 2.05467L21 0L0 19.7995V21.0137L21 41Z"
 							fill="white"
@@ -145,12 +192,20 @@
 					tabindex="0"
 					role="button"
 					class="navcategorie {currentcategory == 1 ? 'disabled' : ''}"
-					on:click={() => {(currentcategory = Math.max(currentcategory-1,1));currentpicture=1}}
+					on:click={() => {
+						currentcategory = Math.max(currentcategory - 1, 1);
+						currentpicture = 1;
+						navAnim(0, 1);
+					}}
 					on:keypress={(e) => {
-						if (e.charCode === 13) {(currentcategory = Math.max(currentcategory-1,1));currentpicture=1}
+						if (e.charCode === 13) {
+							currentcategory = Math.max(currentcategory - 1, 1);
+							currentpicture = 1;
+							navAnim(0, 1);
+						}
 					}}
 				>
-					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg class="arrow" viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M21 41L23 38.8519L3.53901 20.4533L23 2.05467L21 0L0 19.7995V21.0137L21 41Z"
 							fill="white"
@@ -166,13 +221,25 @@
 					class="navphoto {currentpicture == album.categories[currentcategory - 1].photos.length
 						? 'disabled'
 						: ''}"
-					on:click={() => currentpicture = Math.min(currentpicture+1,album.categories[currentcategory - 1].photos.length)}
+					on:click={() => {
+						currentpicture = Math.min(
+							currentpicture + 1,
+							album.categories[currentcategory - 1].photos.length
+						);
+						navAnim(1, 0);
+					}}
 					on:keypress={(e) => {
-						if (e.charCode === 13) currentpicture = Math.min(currentpicture+1,album.categories[currentcategory - 1].photos.length);
+						if (e.charCode === 13) {
+							currentpicture = Math.min(
+								currentpicture + 1,
+								album.categories[currentcategory - 1].photos.length
+							);
+							navAnim(1, 0);
+						}
 					}}
 				>
 					<p>Photo</p>
-					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg class="arrow" viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M2 41L0 38.8519L19.461 20.4533L0 2.05467L2 0L23 19.7995V21.0137L2 41Z"
 							fill="white"
@@ -182,15 +249,23 @@
 				<div
 					tabindex="0"
 					role="button"
-					class="navcategorie {currentcategory == album.categories.length ? 'disabled':''}"
+					class="navcategorie {currentcategory == album.categories.length ? 'disabled' : ''}"
 					on:blur={close.focus()}
-					on:click={() => {currentcategory = Math.min(currentcategory+1,album.categories.length);currentpicture = 1}}
+					on:click={() => {
+						currentcategory = Math.min(currentcategory + 1, album.categories.length);
+						currentpicture = 1;
+						navAnim(1, 1);
+					}}
 					on:keypress={(e) => {
-						if (e.charCode === 13) {currentcategory += 1;currentpicture = 1;}
+						if (e.charCode === 13) {
+							currentcategory += 1;
+							currentpicture = 1;
+							navAnim(1, 1);
+						}
 					}}
 				>
 					<p>Catégorie</p>
-					<svg viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg class="arrow" viewBox="0 0 23 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M2 41L0 38.8519L19.461 20.4533L0 2.05467L2 0L23 19.7995V21.0137L2 41Z"
 							fill="white"
@@ -223,6 +298,7 @@
 		backdrop-filter: blur(0.35rem);
 		color: #fff;
 		z-index: 2;
+		transform: translateZ(0);
 		&::-webkit-scrollbar {
 			display: none;
 		}
@@ -269,6 +345,7 @@
 				}
 				& svg {
 					height: 1.5rem;
+					transition: transform 0.5s ease;
 				}
 			}
 			.prev {
@@ -418,14 +495,20 @@
 					&.photonom {
 						grid-area: 1 / 2 / span 1 / span 1;
 						margin-bottom: 1rem;
-						
 					}
 					&.photodesc {
 						grid-area: 2 / 2 / span 1 / span 1;
-						
 					}
 				}
 			}
+		}
+	}
+	@keyframes flipprev {
+		0% {
+		}
+
+		100% {
+			transform: rotate(180deg);
 		}
 	}
 </style>
