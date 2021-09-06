@@ -11,13 +11,14 @@
 	onMount(() => {
 		console.log(album.categories);
 	});
-
-	$: console.log(`${currentcategory},${currentpicture}`);
-	$: if (close) close.focus();
 	let flipped1 = false;
 	let flipped2 = false;
 	let flipped3 = false;
 	let flipped4 = false;
+	$: console.log(`${currentcategory},${currentpicture}`);
+	$: if (close) {
+		close.focus();
+	}
 
 	let navAnim = (x, y) => {
 		if (x == 0 && y == 0) {
@@ -59,14 +60,25 @@
 
 {#if visible == true}
 	<div class="container" in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
-		<div class="bg" on:click={() => (visible = false)} />
+		<div
+			class="bg"
+			on:click={() => {
+				visible = false;
+				flipped1 = false;
+				flipped2 = false;
+				flipped3 = false;
+				flipped4 = false;
+			}}
+		/>
 		<div class="grid">
 			<div
 				class="close"
 				tabindex="0"
 				role="button"
 				bind:this={close}
-				on:click={() => (visible = false)}
+				on:click={() => {
+					visible = false;
+				}}
 				on:keypress={(e) => {
 					if (e.charCode === 13) visible = false;
 				}}
@@ -346,12 +358,21 @@
 				& svg {
 					height: 1.5rem;
 					transition: transform 0.5s ease;
+					transform: rotateX(0deg);
 				}
 			}
 			.prev {
 				& .navphoto > p,
 				.navcategorie > p {
 					margin-left: 1rem;
+				}
+				& .navphoto,
+				.navcategorie {
+					transition: transform 0.25s ease;
+				}
+				& .navphoto:hover,
+				.navcategorie:hover {
+					transform: translateX(-0.25rem);
 				}
 			}
 			.next {
@@ -362,6 +383,14 @@
 				& > .navphoto,
 				> .navcategorie {
 					justify-content: flex-end;
+				}
+				& .navphoto,
+				.navcategorie {
+					transition: transform 0.25s ease;
+				}
+				& .navphoto:hover,
+				.navcategorie:hover {
+					transform: translateX(0.25rem);
 				}
 			}
 			& .photo {
