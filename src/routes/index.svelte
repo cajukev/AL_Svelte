@@ -27,11 +27,9 @@
 		<Thumbnails />
 	</div>
 	<p class="contained">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur sed tortor enim cras
-		viverra egestas. Est elementum sed pellentesque orci risus.
+		<b>I pulled into Nazareth,</b> was feelin' about half past dead; I just need some place where I can lay my head. "Hey, mister, can you tell me where a man might find a bed?" He.
 		<br /><br />
-		suspendisse nibh diam laoreet sed nisl in sit. Bibendum integer ultricies vestibulum tristique urna
-		amet. Amet non et ipsum accumsan, ac ultrices. Neque urna lorem nulla sagittis blandit.
+		<b>Beyond the horizon,</b> behind the sun. At the end of the rainbow life has only begun. In the long hours of twilight ’neath the stardust above. Beyond the horizon it is easy.
 	</p>
 </div>
 <div />
@@ -78,9 +76,10 @@
 		.btf_container {
 			margin-top: 2rem;
 			& img {
-				display: none;
+				width: 100%;
 			}
 			& h2 {
+				margin-top: 1rem;
 				text-align: initial;
 			}
 		}

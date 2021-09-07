@@ -138,14 +138,14 @@
 					/>
 					<source
 						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-800.webp "
-						media="(max-width:1280)"
+							.id}-1600.webp "
+						media="(max-width:1366px)"
 						type="image/webp"
 					/>
 					<source
 						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-800.jpg "
-						media="(max-width:1280px)"
+							.id}-1600.jpg "
+						media="(max-width:1366px)"
 						type="image/jpeg"
 					/>
 					<source
@@ -348,7 +348,9 @@
 					pointer-events: all;
 					display: flex;
 					flex-direction: row;
-					padding: 1rem 0rem;
+					justify-content: center;
+					padding: 0.5rem 1rem;
+					border: 1px solid white;
 					cursor: pointer;
 					&.disabled {
 						opacity: 0.5;
@@ -370,6 +372,7 @@
 				.navcategorie {
 					transition: transform 0.25s ease;
 					perspective: 20;
+					
 				}
 				& .navphoto:hover,
 				.navcategorie:hover {
@@ -383,7 +386,6 @@
 				}
 				& > .navphoto,
 				> .navcategorie {
-					justify-content: flex-end;
 				}
 				& .navphoto,
 				.navcategorie {
@@ -405,6 +407,7 @@
 				}
 			}
 			& .text {
+				max-width: 40rem;
 				& p {
 					pointer-events: all;
 					&.categorie {
@@ -420,7 +423,7 @@
 			}
 		}
 	}
-	@media (max-width: 1024px) {
+	@media (max-width: 1366px) {
 		.grid {
 			display: grid;
 			grid-template-columns: repeat(2, 50%);
@@ -435,6 +438,9 @@
 				@media (max-width: 600px) {
 					margin-left: 0.75rem;
 				}
+				& .navphoto, .navcategorie{
+					margin: 0.5rem 1rem 0.5rem 0;
+				}
 			}
 			& .next {
 				grid-area: 3 / 2 / span 1 / span 1;
@@ -442,6 +448,9 @@
 				margin-top: 1rem;
 				@media (max-width: 600px) {
 					margin-right: 0.75rem;
+				}
+				& .navphoto, .navcategorie{
+					margin: 0.5rem 0 0.5rem 1rem;
 				}
 			}
 			& .photo {
@@ -470,7 +479,7 @@
 			}
 		}
 	}
-	@media (min-width: 1025px) {
+	@media (min-width: 1367px) {
 		.grid {
 			display: grid;
 			grid-template-columns: repeat(3, auto);
@@ -484,6 +493,9 @@
 				grid-row: 2 / span 1;
 				align-self: center;
 				margin: auto;
+				& .navphoto, .navcategorie{
+					margin: 1rem;
+				}
 			}
 			& .photo {
 				grid-column: 2 / span 1;
@@ -504,6 +516,9 @@
 				align-self: center;
 				justify-self: end;
 				margin: auto;
+				& .navphoto, .navcategorie{
+					margin: 1rem;
+				}
 			}
 			& .text {
 				grid-column: 2 / span 1;
