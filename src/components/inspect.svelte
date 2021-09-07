@@ -126,14 +126,14 @@
 						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
 							.id}-1200.webp, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
 							.id}-1600.webp 2x"
-						media="(max-width:1024px)"
+						media="(max-width:1200px)"
 						type="image/webp"
 					/>
 					<source
 						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
 							.id}-1200.jpg, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
 							.id}-1600.webp 2x"
-						media="(max-width:1024px)"
+						media="(max-width:1200px)"
 						type="image/jpeg"
 					/>
 					<source
@@ -150,24 +150,14 @@
 					/>
 					<source
 						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1200.webp "
-						media="(max-width:1920px)"
+							.id}-1200.webp, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1600.webp 2x"
 						type="image/webp"
 					/>
 					<source
 						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1200.jpg "
-						media="(max-width:1920px)"
-						type="image/jpeg"
-					/>
-					<source
-						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1600.webp "
-						type="image/webp"
-					/>
-					<source
-						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1600.jpg "
+							.id}-1200.jpg, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
+							.id}-1600.jpg 2x"
 						type="image/jpeg"
 					/>
 					<img
@@ -400,7 +390,7 @@
 				align-self: center;
 				justify-self: center;
 				pointer-events: all;
-
+				width: 100%;
 				& img {
 					width: 100%;
 				}

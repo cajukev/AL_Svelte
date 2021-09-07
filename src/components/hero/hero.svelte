@@ -27,10 +27,10 @@
 				media="(max-width:768px)"
 				type="image/jpeg"
 			/>
-			<source srcset="op{num}-800.webp " media="(max-width:1280)" type="image/webp" />
-			<source srcset="op{num}-800.jpg " media="(max-width:1280px)" type="image/jpeg" />
-			<source srcset="op{num}-1200.webp " media="(max-width:1920px)" type="image/webp" />
-			<source srcset="op{num}-1200.jpg " media="(max-width:1920px)" type="image/jpeg" />
+			<source srcset="op{num}-800.webp, op{num}-1600.webp 2x" media="(max-width:1024px)" type="image/webp" />
+			<source srcset="op{num}-800.jpg, op{num}-1600.jpg 2x " media="(max-width:1024px)" type="image/jpeg" />
+			<source srcset="op{num}-1200.webp, op{num}-1600.webp 2x " media="(max-width:1920px)" type="image/webp" />
+			<source srcset="op{num}-1200.jpg, op{num}-1600.jpg 2x " media="(max-width:1920px)" type="image/jpeg" />
 			<source srcset="op{num}-1600.webp " type="image/webp" />
 			<source srcset="op{num}-1600.jpg " type="image/jpeg" />
 			<img src="op{num}-400.jpg" alt="hi:)" />

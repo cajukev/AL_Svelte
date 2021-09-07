@@ -157,7 +157,7 @@
 	}
 	.galerie_lien {
 		border-bottom: 1px solid white;
-		padding: 0.5rem;
+		padding: 0.5rem 0 1rem;
 		display: flex;
 		margin-top: 2rem;
 		align-items: center;
