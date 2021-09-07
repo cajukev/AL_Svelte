@@ -300,12 +300,11 @@
 
 <style lang="scss">
 	.container {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 0;
-		height: 100vh;
-		overflow-y: scroll;
 		width: 100%;
+		height: 100%;
 		background: #000000b2;
 		backdrop-filter: blur(0.35rem);
 		color: #fff;
@@ -413,11 +412,9 @@
 					&.categorie {
 						font-size: 1.2rem;
 						font-style: italic;
-						width: fit-content;
 					}
 					&.photonom {
 						font-size: 1.2rem;
-						width: fit-content;
 					}
 				}
 			}
