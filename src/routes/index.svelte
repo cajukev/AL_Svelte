@@ -156,6 +156,9 @@
 		}
 	}
 	.galerie_lien {
+		border-top: 1px solid white;
+		border-bottom: 1px solid white;
+		padding: 0.5rem;
 		display: flex;
 		margin-top: 2rem;
 		align-items: center;
