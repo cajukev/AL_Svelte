@@ -349,11 +349,12 @@
 					flex-direction: row;
 					justify-content: center;
 					padding: 0.5rem 1rem;
-					border: 1px solid rgba(255, 255, 255, 0.25);
+					border: 1px solid rgba(255, 255, 255, 0.65);
 					cursor: pointer;
 					&.disabled {
 						opacity: 0.5;
 						cursor: default;
+						border: 1px solid rgba(255, 255, 255, 0.25);
 					}
 				}
 				& svg {
