@@ -265,7 +265,7 @@
 					}}
 					on:keypress={(e) => {
 						if (e.charCode === 13) {
-							currentcategory += 1;
+							Math.min(currentcategory + 1, album.categories.length);
 							currentpicture = 1;
 							navAnim(1, 1);
 						}
