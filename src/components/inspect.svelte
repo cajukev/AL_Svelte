@@ -71,26 +71,29 @@
 			}}
 		/>
 		<div class="grid">
-			<div
-				class="close"
-				tabindex="0"
-				role="button"
-				bind:this={close}
-				on:click={() => {
-					visible = false;
-				}}
-				on:keypress={(e) => {
-					if (e.charCode === 13) visible = false;
-				}}
-			>
-				<p>Retour vue grille</p>
-				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path
-						d="M0 0V10.6667H10.6667V0H0ZM8 8H2.66667V2.66667H8V8ZM0 13.3333V24H10.6667V13.3333H0ZM8 21.3333H2.66667V16H8V21.3333ZM13.3333 0V10.6667H24V0H13.3333ZM21.3333 8H16V2.66667H21.3333V8ZM13.3333 13.3333V24H24V13.3333H13.3333ZM21.3333 21.3333H16V16H21.3333V21.3333Z"
-						fill="white"
-					/>
-				</svg>
+			<div class="close-wrap">
+				<div
+					class="close"
+					tabindex="0"
+					role="button"
+					bind:this={close}
+					on:click={() => {
+						visible = false;
+					}}
+					on:keypress={(e) => {
+						if (e.charCode === 13) visible = false;
+					}}
+				>
+					<p>Retour vue grille</p>
+					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M0 0V10.6667H10.6667V0H0ZM8 8H2.66667V2.66667H8V8ZM0 13.3333V24H10.6667V13.3333H0ZM8 21.3333H2.66667V16H8V21.3333ZM13.3333 0V10.6667H24V0H13.3333ZM21.3333 8H16V2.66667H21.3333V8ZM13.3333 13.3333V24H24V13.3333H13.3333ZM21.3333 21.3333H16V16H21.3333V21.3333Z"
+							fill="white"
+						/>
+					</svg>
+				</div>
 			</div>
+
 			<div class="photo">
 				<picture>
 					<source
@@ -168,7 +171,7 @@
 			</div>
 			<div class="prev">
 				<div
-					tabindex="0"
+					tabindex="{currentpicture == 1 ? '-1' : '0'}"
 					role="button"
 					class="navphoto {currentpicture == 1 ? 'disabled' : ''}"
 					on:click={() => {
@@ -191,7 +194,7 @@
 					<p>Photo</p>
 				</div>
 				<div
-					tabindex="0"
+					tabindex="{currentcategory == 1 ? '-1' : '0'}"
 					role="button"
 					class="navcategorie {currentcategory == 1 ? 'disabled' : ''}"
 					on:click={() => {
@@ -218,7 +221,9 @@
 			</div>
 			<div class="next">
 				<div
-					tabindex="0"
+					tabindex="{currentpicture == album.categories[currentcategory - 1].photos.length
+						? '-1'
+						: '0'}"
 					role="button"
 					class="navphoto {currentpicture == album.categories[currentcategory - 1].photos.length
 						? 'disabled'
@@ -249,7 +254,7 @@
 					</svg>
 				</div>
 				<div
-					tabindex="0"
+					tabindex="{currentcategory == album.categories.length ? '-1' : '0'}"
 					role="button"
 					class="navcategorie {currentcategory == album.categories.length ? 'disabled' : ''}"
 					on:blur={close.focus()}
@@ -315,17 +320,22 @@
 		& .grid {
 			display: grid;
 			pointer-events: none;
-			& .close {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: center;
-				text-decoration: underline;
-				cursor: pointer;
-				pointer-events: all;
-				& svg {
-					height: 1.5rem;
-					margin-left: 1rem;
+			& .close-wrap {
+				grid-area: 1/ 1 /span 1 /span 3;
+				justify-self: center;
+				& .close {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					width: fit-content;
+					text-decoration: underline;
+					cursor: pointer;
+					pointer-events: all;
+					& svg {
+						height: 1.5rem;
+						margin-left: 1rem;
+					}
 				}
 			}
 			& .prev,
@@ -339,7 +349,7 @@
 					flex-direction: row;
 					justify-content: center;
 					padding: 0.5rem 1rem;
-					border: 1px solid white;
+					border: 1px solid rgba(255, 255, 255, 0.25);
 					cursor: pointer;
 					&.disabled {
 						opacity: 0.5;
@@ -361,7 +371,6 @@
 				.navcategorie {
 					transition: transform 0.25s ease;
 					perspective: 20;
-					
 				}
 				& .navphoto:hover,
 				.navcategorie:hover {
@@ -425,7 +434,8 @@
 				@media (max-width: 600px) {
 					margin-left: 0.75rem;
 				}
-				& .navphoto, .navcategorie{
+				& .navphoto,
+				.navcategorie {
 					margin: 0.5rem 1rem 0.5rem 0;
 				}
 			}
@@ -436,7 +446,8 @@
 				@media (max-width: 600px) {
 					margin-right: 0.75rem;
 				}
-				& .navphoto, .navcategorie{
+				& .navphoto,
+				.navcategorie {
 					margin: 0.5rem 0 0.5rem 1rem;
 				}
 			}
@@ -480,7 +491,8 @@
 				grid-row: 2 / span 1;
 				align-self: center;
 				margin: auto;
-				& .navphoto, .navcategorie{
+				& .navphoto,
+				.navcategorie {
 					margin: 1rem;
 				}
 			}
@@ -503,7 +515,8 @@
 				align-self: center;
 				justify-self: end;
 				margin: auto;
-				& .navphoto, .navcategorie{
+				& .navphoto,
+				.navcategorie {
 					margin: 1rem;
 				}
 			}

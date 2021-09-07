@@ -39,7 +39,7 @@
 					<div
 						class="photo"
 						on:keypress={(e) => {
-							if (e.charCode === 13) showInspect;
+							if (e.charCode === 13) showInspect(i, j);
 						}}
 						on:click={() => showInspect(i, j)}
 						tabindex="0"
