@@ -141,26 +141,12 @@
 					/>
 					<source
 						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1600.webp "
-						media="(max-width:1366px)"
+							.id}-1600.webp"
 						type="image/webp"
 					/>
 					<source
 						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1600.jpg "
-						media="(max-width:1366px)"
-						type="image/jpeg"
-					/>
-					<source
-						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1200.webp, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1600.webp 2x"
-						type="image/webp"
-					/>
-					<source
-						srcset="op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1200.jpg, op{album.categories[currentcategory - 1].photos[currentpicture - 1]
-							.id}-1600.jpg 2x"
+							.id}-1600.jpg"
 						type="image/jpeg"
 					/>
 					<img
@@ -305,6 +291,9 @@
 		color: #fff;
 		z-index: 2;
 		transform: translateZ(0);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		&::-webkit-scrollbar {
 			display: none;
 		}
@@ -410,7 +399,7 @@
 				& p {
 					pointer-events: all;
 					&.categorie {
-						font-size: 1.2rem;
+						font-size: 1rem;
 						font-style: italic;
 					}
 					&.photonom {
@@ -483,24 +472,25 @@
 			display: grid;
 			grid-template-columns: repeat(3, auto);
 			grid-template-rows: repeat(3, auto);
+			max-width: 80vw;
 			& .close {
 				grid-area: 1 / span 3 /1 / span 1;
 				margin-top: 2rem;
 			}
 			& .prev {
 				grid-column: 1 / span 1;
-				grid-row: 2 / span 1;
-				align-self: center;
-				margin: auto;
+				grid-row: 3 / span 1;
+				align-self: start;
+				margin: 2rem  auto 0 auto;
 				& .navphoto,
 				.navcategorie {
-					margin: 1rem;
+					margin: 0 1.5rem 1rem 0;
 				}
 			}
 			& .photo {
-				grid-column: 2 / span 1;
+				grid-column: 1 / span 3;
 				grid-row: 2 / span 1;
-				max-width: 60vw;
+				
 				border: 0.2rem solid white;
 				margin-top: 2rem;
 				& picture {
@@ -512,13 +502,12 @@
 			}
 			& .next {
 				grid-column: 3 / span 1;
-				grid-row: 2 / span 1;
-				align-self: center;
-				justify-self: end;
-				margin: auto;
+				grid-row: 3 / span 1;
+				align-self: start;
+				margin: 2rem  auto 0 auto;
 				& .navphoto,
 				.navcategorie {
-					margin: 1rem;
+					margin: 0 0 1rem 1.5rem;
 				}
 			}
 			& .text {
@@ -529,22 +518,17 @@
 				justify-self: center;
 				width: 100%;
 				display: grid;
-				grid-template-columns: 20% 80%;
-				align-content: start;
 				margin-top: 2rem;
 				margin-bottom: 2rem;
 				& p {
 					font-size: 1rem;
 					&.categorie {
-						grid-area: 1 / 1 / span 1 / span 1;
 						width: 8rem;
 					}
 					&.photonom {
-						grid-area: 1 / 2 / span 1 / span 1;
 						margin-bottom: 1rem;
 					}
 					&.photodesc {
-						grid-area: 2 / 2 / span 1 / span 1;
 					}
 				}
 			}
