@@ -243,7 +243,6 @@
 					tabindex="{currentcategory == album.categories.length ? '-1' : '0'}"
 					role="button"
 					class="navcategorie {currentcategory == album.categories.length ? 'disabled' : ''}"
-					on:blur={close.focus()}
 					on:click={() => {
 						currentcategory = Math.min(currentcategory + 1, album.categories.length);
 						currentpicture = 1;
@@ -251,7 +250,7 @@
 					}}
 					on:keypress={(e) => {
 						if (e.charCode === 13) {
-							Math.min(currentcategory + 1, album.categories.length);
+							currentcategory = Math.min(currentcategory + 1, album.categories.length);
 							currentpicture = 1;
 							navAnim(1, 1);
 						}

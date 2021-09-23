@@ -66,11 +66,7 @@
 								media="(max-width:1440px)"
 								type="image/jpeg"
 							/>
-							<source
-								srcset="op{photo.id}-600.webp"
-								media="(max-width:1920px)"
-								type="image/webp"
-							/>
+							<source srcset="op{photo.id}-600.webp" media="(max-width:1920px)" type="image/webp" />
 							<source srcset="op{photo.id}-600.jpg" media="(max-width:1920px)" type="image/jpeg" />
 							<img src="op{photo.id}-240.jpg" alt="hi:)" />
 						</picture>
@@ -85,39 +81,39 @@
 	.inspectWrap {
 		z-index: 2;
 	}
-	.photo {
-		position: relative;
-		height: 0;
-		padding-top: 56.25%;
-		& picture {
-			background-color: #252527;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			filter: drop-shadow(0px 0.25rem 0.5rem rgba(0, 0, 0, 0.75));
-			& img {
-			}
-		}
-	}
 
 	.container {
 		& .categorie {
 			& .photos {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+				grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
 				grid-gap: 1rem;
 				width: 100%;
 				@media (min-width: 1462px) {
-					grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+					grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 				}
 				@media (max-width: 623px) {
-					grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+					grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 				}
-
-				& img {
-					width: 100%;
+				.photo {
+					position: relative;
+					height: 0;
+					padding-top: 56.25%;
+					
+					& picture {
+						background-color: #252527;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						filter: drop-shadow(0px 0.25rem 0.5rem rgba(0, 0, 0, 0.75));
+						
+						& img {
+							width: 100%;
+							
+						}
+					}
 				}
 			}
 		}
