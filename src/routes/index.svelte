@@ -36,18 +36,21 @@
 </div>
 <div />
 <div class="galerie_lien contained">
-	<a href="/galerie"
-		>Visitez notre galerie de photos!<svg
-			viewBox="0 0 33 34"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
+	<a href="/galerie">
+		<svg viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				d="M29.3333 3.77778V30.2222H3.66667V3.77778H29.3333ZM29.3333 0H3.66667C1.65 0 0 1.7 0 3.77778V30.2222C0 32.3 1.65 34 3.66667 34H29.3333C31.35 34 33 32.3 33 30.2222V3.77778C33 1.7 31.35 0 29.3333 0ZM20.4233 16.7356L14.9233 24.0456L11 19.1533L5.5 26.4444H27.5L20.4233 16.7356Z"
 				fill="white"
 			/>
-		</svg></a
-	>
+		</svg>
+		Visitez notre galerie de photos!
+		<svg viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M29.3333 3.77778V30.2222H3.66667V3.77778H29.3333ZM29.3333 0H3.66667C1.65 0 0 1.7 0 3.77778V30.2222C0 32.3 1.65 34 3.66667 34H29.3333C31.35 34 33 32.3 33 30.2222V3.77778C33 1.7 31.35 0 29.3333 0ZM20.4233 16.7356L14.9233 24.0456L11 19.1533L5.5 26.4444H27.5L20.4233 16.7356Z"
+				fill="white"
+			/>
+		</svg>
+	</a>
 </div>
 <div bind:this={btf_container} class="btf_container contained l_contained">
 	<picture>
@@ -79,7 +82,6 @@
 			}
 		}
 		.btf_container {
-			margin-top: 2rem;
 			& img {
 				width: 100%;
 			}
@@ -132,7 +134,6 @@
 			}
 		}
 		.btf_container {
-			margin-top: 2rem;
 			display: grid;
 			grid-template-columns: 60% 40%;
 			opacity: 0.25;
@@ -161,23 +162,22 @@
 		}
 	}
 	.galerie_lien {
-		border-bottom: 1px solid white;
-		padding: 0.5rem 0 1rem;
-
-		margin-top: 2rem;
+		margin: 4rem 0;
 		display: flex;
 		justify-content: center;
 		filter: drop-shadow(0.25rem 0.25rem 0.125rem rgba(0, 0, 0, 0.75));
 		& a {
 			display: flex;
-			font-size: 1.2rem;
+			text-align: center;
+			font-size: 1.5rem;
 			align-items: center;
 			justify-content: center;
 			width: fit-content;
+			text-decoration-color: red;
 		}
 		& svg {
-			height: 1.5rem;
-			margin-left: 1rem;
+			height: 2rem;
+			margin: 0 1rem;
 		}
 	}
 	.thumbnails {

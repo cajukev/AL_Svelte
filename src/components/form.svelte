@@ -6,9 +6,8 @@
 	let form3 = '';
 	let form4 = '';
 	let form5 = '';
-
 	function formCheck1() {
-		if (form1 != '' && form2 != '' && form3 != '' && form4 != '') {
+		if (form1 != '' && form2 != '' && form3 != '') {
 			b1.disabled = false;
 		} else {
 			b1.disabled = true;
@@ -24,7 +23,7 @@
 		<input type="text" id="tel" name="tel" bind:value={form2} on:input={formCheck1} />
 		<label for="email">Adresse courriel <span style="color:#ff9d9d">*</span></label>
 		<input type="text" id="email" name="email" bind:value={form3} on:input={formCheck1} />
-		<label for="desc">Description du projet <span style="color:#ff9d9d">*</span></label>
+		<label for="desc">Description du projet</label>
 		<textarea id="desc" name="desc" bind:value={form4} on:input={formCheck1} />
 	</div>
 
@@ -36,8 +35,7 @@
 
 <style lang="scss">
 	form {
-		border-left: 1px solid white;
-		padding: 0.5rem 0 0.5rem 0.75rem;
+		padding: 0.5rem 0;
 		& textarea {
 			display: block;
       height: 5rem;
@@ -77,6 +75,10 @@
 		padding: 0.5rem 1rem;
 		&:disabled {
 			opacity: 0.3;
+			cursor: not-allowed;
+		}
+		&:not(:disabled) {
+			cursor: pointer;
 		}
 		&:nth-of-type(2) {
 			margin-left: 1rem;
